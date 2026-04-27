@@ -136,9 +136,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;backgroun
   position:fixed;
   top:0;left:0;right:0;bottom:0;
   z-index:9999;
-  background:rgba(7,17,27,.75);
-  align-items:flex-end;
-  justify-content:center;
+  background:rgba(7,17,27,.8);
 }
 #install-modal
 .im-box{background:#0c1a27;width:100%;max-width:480px;border-radius:20px 20px 0 0;border-top:3px solid #c49a2a;max-height:78vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
@@ -432,9 +430,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;backgroun
 // ═══ INSTALL MODAL ═══
 function openInstall() {
   var m = document.getElementById('install-modal');
-  m.style.display = 'flex';
-  m.style.alignItems = 'flex-end';
-  m.style.justifyContent = 'center';
+  m.style.cssText = 'display:flex !important;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(7,17,27,.8);align-items:flex-end;justify-content:center;';
 }
 function closeInstall() {
   document.getElementById('install-modal').style.display = 'none';
@@ -479,16 +475,15 @@ document.getElementById('install-modal').addEventListener('click', function(e) {
   if (e.target === this) closeInstall();
 });
 
-// ═══ AUTO SHOW INSTALL POPUP — after app loads ═══
+// ═══ AUTO SHOW INSTALL POPUP — shows every visit unless already installed ═══
 window.addEventListener('load', function() {
+  // Don't show if already installed as PWA on home screen
   var isStandalone = window.matchMedia('(display-mode: standalone)').matches
                   || window.navigator.standalone === true;
-  var shown = sessionStorage.getItem('installShown');
-  if (!isStandalone && !shown) {
-    // Wait 1.5s so user sees the app first, THEN popup slides up
+  if (!isStandalone) {
+    // Show after 1.5s so user sees the app first
     setTimeout(function() {
       openInstall();
-      sessionStorage.setItem('installShown', '1');
     }, 1500);
   }
 });
