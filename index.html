@@ -710,6 +710,12 @@ h2::after{content:"";display:block;width:64px;height:4px;background:var(--gold);
 @media(max-width:900px){.j-wm{left:50%;top:calc(38% - 140px);width:72vw;opacity:.11}}
 .wm{justify-content:flex-end}
 
+.j-wm{display:none!important}
+.wm::before{background:#BC9440;opacity:.3}
+@media(max-width:900px){.wm::before{opacity:.24}}
+.wm::before{width:min(27vw,380px);margin-right:2vw}
+@media(max-width:900px){.wm::before{width:56vw;margin-right:2vw}}
+
 </style>
 </head>
 <body>
@@ -803,7 +809,6 @@ h2::after{content:"";display:block;width:64px;height:4px;background:var(--gold);
 <header id="home" class="hero3">
   <div class="wrap j-grid">
     <div class="j-copy">
-      <div class="j-wm" aria-hidden="true"></div>
       <p class="j-kick">Jacksonville family law attorney</p>
       <h1 class="j-name">Jennifer M. Erlinger<small>, Esq.</small></h1>
       <p class="j-role">Founder of Erlinger Family Law &middot; Former Florida Assistant State Attorney</p>
