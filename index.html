@@ -690,6 +690,12 @@ h2::after{content:"";display:block;width:64px;height:4px;background:var(--gold);
   .popup-head{padding:22px 20px 16px}
   .popup-title{font-size:26px}
 }
+/* watermark: pinned to the right side */
+.wm{justify-content:flex-end}
+.wm::before{width:min(36vw,500px);margin-right:-3vw;transform:none;opacity:.12}
+@media(max-width:900px){.wm::before{width:72vw;margin-right:-24vw;transform:none;opacity:.1}}
+.wm::before{opacity:.2}
+@media(max-width:900px){.wm::before{opacity:.17}}
 
 </style>
 </head>
