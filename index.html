@@ -715,6 +715,15 @@ h2::after{content:"";display:block;width:64px;height:4px;background:var(--gold);
 @media(max-width:900px){.wm::before{opacity:.24}}
 .wm::before{width:min(27vw,380px);margin-right:2vw}
 @media(max-width:900px){.wm::before{width:56vw;margin-right:2vw}}
+.wm{z-index:0}
+main,footer{position:relative;z-index:1}
+.wm{z-index:0;justify-content:center}
+.wm::before{margin-right:0;opacity:.2}
+@media(max-width:900px){.wm::before{margin-right:0;opacity:.17}}
+main,footer{position:relative;z-index:1}
+.wm{z-index:2}
+.wm::before{opacity:.17}
+@media(max-width:900px){.wm::before{opacity:.15}}
 
 </style>
 </head>
