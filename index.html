@@ -735,6 +735,15 @@ main,footer{position:relative;z-index:1}
 
 .pp-links{margin:26px 0 0}.pp-links h4{color:var(--gold-l);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
 .pp-btns{display:flex;flex-wrap:wrap;gap:10px}.pp-b{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border:2px solid var(--gold);border-radius:10px;color:#fff;font-weight:600;font-size:15px}.pp-b:hover{background:var(--gold);color:var(--ink)}
+/* gold header links */
+.nav-links a,.pa-bar a{color:#9C7A2C;font-weight:600}
+.nav-links a::after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nav-links a:hover,.nav-links a.active{color:#0C3328;background:var(--gold)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(0)}
+.pa-bar a:hover{color:#0C3328;background:var(--gold);border-radius:6px}
+.pa-bar a{padding:2px 8px;transition:background .2s,color .2s}
+.nav-phone{color:#9C7A2C}
+.nav-phone:hover{color:#0C3328}
 
 </style>
 </head>
@@ -1369,6 +1378,7 @@ var PP_LINKS={portal:'',pay:'',intake:''};
 (function(){var any=false;[['portal','pp-portal'],['pay','pp-pay'],['intake','pp-intake']].forEach(function(p){var u=PP_LINKS[p[0]],el=document.getElementById(p[1]);if(u&&el){el.href=u;el.hidden=false;any=true;}});var w=document.getElementById('pp-links');if(w&&any)w.hidden=false;})();
 
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
+(function(){var ls=[].slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));function spy(){var cur=null,best=-1e9;ls.forEach(function(l){var s=document.querySelector(l.getAttribute('href'));if(!s)return;var t=s.getBoundingClientRect().top;if(t<=160&&t>best){best=t;cur=l;}});ls.forEach(function(l){l.classList.toggle('active',l===cur);});}window.addEventListener('scroll',spy,{passive:true});spy();})();
 var _dip=null;
 window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();_dip=e;});
 function installApp(){
